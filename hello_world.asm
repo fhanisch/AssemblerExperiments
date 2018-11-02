@@ -6,29 +6,16 @@ extern printf
 extern writeText
 extern getInt
 
+section .code
+
+msg		db		'*** Hello World !!! ***',10,0
+
 section .text
 
 start:
-	push	rax
-	push	rcx
-	push	rdx
-	push	r8
-	push	r9
-	push	r10
-	push	r11
-	mov		rcx,message
-	call	printf
-	pop		r11
-	pop		r10
-	pop		r9
-	pop		r8
-	pop		rdx
-	pop		rcx
-	pop		rax
-	;call	writeText
-	;call 	getInt
-l:	jmp		l
-	ret
-
-message:
-	db		'*** Hello World !!! ***',10,0
+		mov		rcx,msg
+		call	printf
+		;call	writeText
+		;call 	getInt
+l:		jmp		l
+		ret
