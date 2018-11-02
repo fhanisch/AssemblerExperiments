@@ -1,12 +1,20 @@
 test:
 	nasm -f win64 getVal.asm -l list.txt
+	nasm -f win64 math.asm
 	cl /nologo /W3 /c test.c
-	link /nologo test.obj getVal.obj /LARGEADDRESSAWARE:NO
+	link /nologo test.obj getVal.obj math.obj /LARGEADDRESSAWARE:NO
 
 hello:
 	nasm -fwin64 hello_world.asm
-	cl /nologo /W3 /c writeText.c
-	link /nologo hello_world.obj writeText.obj /SUBSYSTEM:CONSOLE /ENTRY:start libucrt.lib
+	cl /nologo /W3 /c io.c
+	link /nologo hello_world.obj io.obj /SUBSYSTEM:CONSOLE /ENTRY:start /LARGEADDRESSAWARE:NO ucrt.lib
+
+hello_masm:
+	cl /nologo /W3 /c io.c
+	ml64 hello_world_masm.asm /link io.obj /subsystem:console /entry:start ucrt.lib
+
+#ml64 /c hello_world_masm.asm
+#link /nologo hello_world_masm.obj io.obj /subsystem:console /entry:start ucrt.lib
 
 msgBox:
 	nasm -f win64 msgBox.asm
