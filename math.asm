@@ -7,7 +7,7 @@ global mult
 section .data
 
 x		dq		0
-y		dq		1
+y		dq		0
 
 section .text
 
