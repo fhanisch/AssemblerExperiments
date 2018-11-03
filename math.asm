@@ -6,6 +6,7 @@ global mult
 global add4
 global mul4
 global mul4x4v
+global mul4x4
 
 section .data
 a		dd		1.5
@@ -65,5 +66,102 @@ mul4x4v:
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
+		movups	xmm0, [rcx+32]
+		movss	xmm1, dword [rdx+8]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+48]
+		movss	xmm1, dword [rdx+12]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
 		movups	[rdx], xmm2
+		ret
+
+mul4x4:
+		movups	xmm0, [rcx]
+		movss	xmm1, dword [rdx]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		movups	xmm2, xmm0
+
+		movups	xmm0, [rcx+16]
+		movss	xmm1, dword [rdx+4]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+32]
+		movss	xmm1, dword [rdx+8]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+48]
+		movss	xmm1, dword [rdx+12]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	[rcx], xmm2
+
+		;-----------------------
+
+		movups	xmm0, [rcx+64]
+		movss	xmm1, dword [rdx+16]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		movups	xmm2, xmm0
+
+		movups	xmm0, [rcx+80]
+		movss	xmm1, dword [rdx+20]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+96]
+		movss	xmm1, dword [rdx+24]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+112]
+		movss	xmm1, dword [rdx+28]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	[rcx+16], xmm2
+
+		;-----------------------
+
+		movups	xmm0, [rcx+128]
+		movss	xmm1, dword [rdx+32]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		movups	xmm2, xmm0
+
+		movups	xmm0, [rcx+144]
+		movss	xmm1, dword [rdx+36]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+160]
+		movss	xmm1, dword [rdx+40]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+176]
+		movss	xmm1, dword [rdx+44]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	[rcx+32], xmm2
+
 		ret
