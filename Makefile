@@ -1,6 +1,6 @@
 test:
-	nasm -f win64 getVal.asm -l list.txt
-	nasm -f win64 math.asm
+	nasm -f win64 getVal.asm -l getVal.lst
+	nasm -f win64 math.asm -l math.lst
 	cl /nologo /W3 /c test.c
 	link /nologo test.obj getVal.obj math.obj /LARGEADDRESSAWARE:NO
 
