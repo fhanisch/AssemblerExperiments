@@ -106,62 +106,90 @@ mul4x4:
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	[rcx], xmm2
+		movups	[r8], xmm2
 
 		;-----------------------
 
-		movups	xmm0, [rcx+64]
+		movups	xmm0, [rcx]
 		movss	xmm1, dword [rdx+16]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		movups	xmm2, xmm0
 
-		movups	xmm0, [rcx+80]
+		movups	xmm0, [rcx+16]
 		movss	xmm1, dword [rdx+20]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	xmm0, [rcx+96]
+		movups	xmm0, [rcx+32]
 		movss	xmm1, dword [rdx+24]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	xmm0, [rcx+112]
+		movups	xmm0, [rcx+48]
 		movss	xmm1, dword [rdx+28]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	[rcx+16], xmm2
+		movups	[r8+16], xmm2
 
 		;-----------------------
 
-		movups	xmm0, [rcx+128]
+		movups	xmm0, [rcx]
 		movss	xmm1, dword [rdx+32]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		movups	xmm2, xmm0
 
-		movups	xmm0, [rcx+144]
+		movups	xmm0, [rcx+16]
 		movss	xmm1, dword [rdx+36]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	xmm0, [rcx+160]
+		movups	xmm0, [rcx+32]
 		movss	xmm1, dword [rdx+40]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	xmm0, [rcx+176]
+		movups	xmm0, [rcx+48]
 		movss	xmm1, dword [rdx+44]
 		shufps	xmm1, xmm1, 0
 		mulps	xmm0, xmm1
 		addps	xmm2, xmm0
 
-		movups	[rcx+32], xmm2
+		movups	[r8+32], xmm2
+
+		;-----------------------
+
+		movups	xmm0, [rcx]
+		movss	xmm1, dword [rdx+48]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		movups	xmm2, xmm0
+
+		movups	xmm0, [rcx+16]
+		movss	xmm1, dword [rdx+52]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+32]
+		movss	xmm1, dword [rdx+56]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	xmm0, [rcx+48]
+		movss	xmm1, dword [rdx+60]
+		shufps	xmm1, xmm1, 0
+		mulps	xmm0, xmm1
+		addps	xmm2, xmm0
+
+		movups	[r8+48], xmm2
 
 		ret
