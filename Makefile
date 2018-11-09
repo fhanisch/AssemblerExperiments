@@ -5,7 +5,7 @@ test:
 	link /nologo test.obj getVal.obj math.obj ../lib/mathlib.lib /LARGEADDRESSAWARE:NO
 
 hello:
-	nasm -fwin64 hello_world.asm
+	nasm -fwin64 hello_world.asm -l hello.lst
 	cl /nologo /W3 /c io.c
 	link /nologo hello_world.obj io.obj /SUBSYSTEM:CONSOLE /ENTRY:start /LARGEADDRESSAWARE:NO ucrt.lib
 
